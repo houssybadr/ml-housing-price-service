@@ -5,7 +5,7 @@ class MyRidgeRegression:
     def __init__(self, learning_rate=0.01, n_iterations=1000, lambda_val=0.1):
         self.learning_rate=learning_rate
         self.n_iterations=n_iterations
-        self.lambda_val=lambda_val  # This is the L2 penalty term
+        self.lambda_val=lambda_val 
         self.weights =None
         self.bias=None
 
