@@ -11,13 +11,10 @@ def preprocess(data_json, scaler):
         if MULTI_CAT_COL in df:
             df = pd.get_dummies(df, columns=[MULTI_CAT_COL], drop_first=True, dtype=int)
         
-        # S'assure que toutes les colonnes attendues existent, avec 0 si elles manquent
         df_reindexed = df.reindex(columns=EXPECTED_COLUMNS, fill_value=0)
         
-        # Applique le scaler
         df_reindexed[NUMERICAL_COLS_TO_SCALE] = scaler.transform(df_reindexed[NUMERICAL_COLS_TO_SCALE])
         
-        # --- CORRECTION ---
         # Retourne les valeurs en s'assurant que l'ordre des colonnes est correct
         return df_reindexed[EXPECTED_COLUMNS].values
 
